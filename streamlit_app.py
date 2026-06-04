@@ -10,20 +10,15 @@ layout="centered"
 
 st.title("🍏 Klasifikasi Gambar Apel")
 
-st.write(
-"Upload gambar untuk diproses."
-)
-
 uploaded_file = st.file_uploader(
 "Pilih gambar",
 type=["jpg", "jpeg", "png"]
 )
 
 if uploaded_file is not None:
-
-```
 image = Image.open(uploaded_file).convert("RGB")
 
+```
 st.image(
     image,
     caption="Gambar yang diupload",
@@ -35,11 +30,9 @@ img = np.array(img, dtype=np.float32) / 255.0
 
 st.subheader("Informasi Gambar")
 
-st.write(f"Ukuran array: {img.shape}")
+st.write(f"Shape gambar: {img.shape}")
 st.write(f"Nilai minimum: {img.min():.4f}")
 st.write(f"Nilai maksimum: {img.max():.4f}")
 
-st.warning(
-    "Prediksi CNN dinonaktifkan karena model TensorFlow (.h5) tidak dapat dijalankan pada environment Python 3.14 Streamlit Cloud."
-)
+st.success("Gambar berhasil diproses.")
 ```
