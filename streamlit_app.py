@@ -1,5 +1,4 @@
 import streamlit as st
-import tensorflow as tf
 import numpy as np
 from PIL import Image
 
@@ -11,10 +10,7 @@ st.set_page_config(
 
 @st.cache_resource
 def load_cnn_model():
-    return tf.keras.models.load_model(
-        "model_apel_cnn.h5",
-        compile=False
-    )
+    return 
 
 try:
     model = load_cnn_model()
