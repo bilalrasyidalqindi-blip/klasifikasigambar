@@ -1,14 +1,12 @@
 import streamlit as st
-import numpy as np
 from PIL import Image
 
 st.set_page_config(
 page_title="Klasifikasi Apel",
-page_icon="🍎",
-layout="centered"
+page_icon="🍎"
 )
 
-st.title("🍎🍏 Klasifikasi Apel Merah dan Hijau")
+st.title("🍎 Klasifikasi Apel")
 
 uploaded_file = st.file_uploader(
 "Upload gambar apel",
@@ -16,7 +14,7 @@ type=["jpg", "jpeg", "png"]
 )
 
 if uploaded_file is not None:
-image = Image.open(uploaded_file).convert("RGB")
+image = Image.open(uploaded_file)
 
 ```
 st.image(
@@ -25,21 +23,25 @@ st.image(
     use_container_width=True
 )
 
-img = image.resize((128, 128))
-img = np.array(img)
+st.success("File berhasil diupload")
 
-red_mean = np.mean(img[:, :, 0])
-green_mean = np.mean(img[:, :, 1])
-blue_mean = np.mean(img[:, :, 2])
+st.write("Prediksi sederhana:")
 
-st.subheader("Analisis Warna")
+image_rgb = image.convert("RGB")
 
-st.write(f"Merah (R): {red_mean:.2f}")
-st.write(f"Hijau (G): {green_mean:.2f}")
-st.write(f"Biru (B): {blue_mean:.2f}")
+pixels = list(image_rgb.getdata())
 
-if green_mean > red_mean:
-    st.success("🍏 Prediksi: Apel Hijau")
+total_r = 0
+total_g = 0
+
+for r, g, b in pixels:
+    total_r += r
+    total_g += g
+
+avg_r = total_r / len(pixels)
+avg_g = total_g / len(pixels)
+
+if avg_g > avg_r:
+    st.success("🍏 Apel Hijau")
 else:
-    st.success("🍎 Prediksi: Apel Merah")
-```
+    st.success("🍎 Apel Merah")
