@@ -16,10 +16,9 @@ type=["jpg", "jpeg", "png"]
 )
 
 if uploaded_file is not None:
-
-```
 image = Image.open(uploaded_file).convert("RGB")
 
+```
 st.image(
     image,
     caption="Gambar yang diupload",
@@ -43,3 +42,4 @@ if green_mean > red_mean:
     st.success("🍏 Prediksi: Apel Hijau")
 else:
     st.success("🍎 Prediksi: Apel Merah")
+```
