@@ -11,9 +11,11 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 
+from keras.models import load_model as keras_load_model
+
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("model_apel_cnn.h5")
+    return keras_load_model("model_apel_cnn.h5", compile=False)
 
 model = load_model()
 
