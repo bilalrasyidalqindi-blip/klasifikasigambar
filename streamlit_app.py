@@ -34,5 +34,5 @@ st.write(f"Shape gambar: {img.shape}")
 st.write(f"Nilai minimum: {img.min():.4f}")
 st.write(f"Nilai maksimum: {img.max():.4f}")
 
-st.success("Gambar berhasil diproses.")
+st.success("Gambar berhasil diproses")
 ```
