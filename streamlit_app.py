@@ -43,4 +43,3 @@ if green_mean > red_mean:
     st.success("🍏 Prediksi: Apel Hijau")
 else:
     st.success("🍎 Prediksi: Apel Merah")
-```
