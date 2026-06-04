@@ -2,6 +2,15 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 
+@st.cache_resource
+def load_model():
+    return tf.keras.models.load_model(
+        "model_apel_cnn.h5",
+        compile=False
+    )
+
+model = load_model()
+
 st.set_page_config(
     page_title="Klasifikasi Gambar",
     page_icon="🖼️",
